@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-mm2k3=)8%xlyz^#q@%-sq!5^y4ww$620vfd4$lbup4v5igdo#b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'your-app-name.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '*.onrender.com']
 
 
 # Application definition
