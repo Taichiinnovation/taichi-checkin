@@ -1,0 +1,1 @@
+web: gunicorn taichi_project.wsgi

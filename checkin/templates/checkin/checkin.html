@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head><title>簽到</title></head>
+<body>
+    <h1>智能太極教室簽到</h1>
+    <form method="post">
+        {% csrf_token %}
+        <input type="text" name="user_id" placeholder="輸入ID (例如001)">
+        <button type="submit">簽到</button>
+    </form>
+    {% if message %}
+        <p>{{ message }}</p>
+    {% endif %}
+</body>
+</html>

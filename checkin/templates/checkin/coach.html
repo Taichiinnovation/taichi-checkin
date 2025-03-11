@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>教練頁面</title>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-database.js"></script>
+</head>
+<body>
+    <h1>已簽到學員</h1>
+    <div id="checkin-list"></div>
+    <script>
+        const firebaseConfig = {
+            apiKey: "AIzaSyxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+            authDomain: "taichi-innovation.firebaseapp.com",
+            databaseURL: "https://taichi-innovation-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "taichi-innovation",
+            storageBucket: "taichi-innovation.appspot.com",
+            messagingSenderId: "123456789012",
+            appId: "1:123456789012:web:xxxxxxxxxxxxxxxxxxxxxx"
+        };
+        firebase.initializeApp(firebaseConfig); // 注意：這行應為 initializeApp
+        const dbRef = firebase.database().ref('room1/checkins');
+        dbRef.on('value', (snapshot) => {
+            console.log('Data received:', snapshot.val());
+            const checkins = snapshot.val();
+            document.getElementById('checkin-list').innerHTML = '';
+            if (checkins) {
+                for (let id in checkins) {
+                    const user = checkins[id];
+                    document.getElementById('checkin-list').innerHTML += `<p>${user.name} - ${user.timestamp}</p>`;
+                }
+            } else {
+                document.getElementById('checkin-list').innerHTML = '<p>暫無簽到記錄</p>';
+            }
+        }, (error) => {
+            console.error('Error:', error);
+        });
+    </script>
+</body>
+</html>
